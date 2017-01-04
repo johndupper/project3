@@ -34,7 +34,17 @@ function handleError(error) {
 
 console.log('emptying and re-seeding local database');
 User.remove({})
-.then(function() {
-  console.log('creating one new user');
-  
-})
+    .then(function() {
+        console.log('creating one new user');
+        var jungmin = new User({
+            local: {
+                email: 'j@test.com',
+                password: ' test'
+            }
+        });
+        return User.create(jungmin);
+    }).then(function(user) {
+        console.log('new user: ', user);
+}).then(function() {
+    quit();
+});
