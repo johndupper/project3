@@ -25,6 +25,7 @@ function quit() {
     mongoose.disconnect();
 }
 
+//* let us know if something went wrong with seeding database locally
 function handleError(error) {
     console.log('seeds error: ', error);
     quit();
