@@ -10,8 +10,9 @@ var UserSchema = new mongoose.Schema({
             type: String,
             required: true
         }
-    },
-    { timestamps: true }  // createdAt, updatedAt
+    }
+}, {
+    timestamps: true
 });
 
 module.exports = mongoose.model('User', UserSchema);
