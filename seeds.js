@@ -41,8 +41,8 @@ User.remove({})
                 email: 'j@test.com',
                 password: ' test'
             }
-            return User.create(jungmin);
         });
+        return User.create(jungmin);
     }).then(function(user) {
         console.log('new user: ', user);
 }).then(function() {
