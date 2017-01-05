@@ -27,8 +27,6 @@ mongoose.connection.once('open', function() {
 });
 
 
-
-
 var index = require('./routes/index');
 var users = require('./routes/users');
 
