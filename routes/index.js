@@ -25,6 +25,7 @@ router.post('/signup', function(req, res, next) {
     return signupStrategy(req, res, next);
 });
 
+
 router.get('/login', function(req, res, next) {
     res.render('login', {
         message: req.flash()
@@ -39,6 +40,12 @@ router.post('/login', function(req, res, next) {
     });
     return loginProperty(req, res, next);
 });
+
+
+router.get('/profile', function(req, res, next) {
+    res.render('profile');
+});
+
 
 router.get('/logout', function(req, res, next) {
     req.logout();
