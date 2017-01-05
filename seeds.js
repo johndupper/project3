@@ -44,9 +44,10 @@ User.remove({})
             }
         });
         return User.create(jungmin);
-    }).then(function(user) {
+    })
+    .then(function(user) {
         console.log('new user: ', user);
-})
+    })
     .then(function() {
         var job = new Job({
             title: 'Front-End Web Developer',
