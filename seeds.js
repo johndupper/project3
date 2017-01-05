@@ -2,6 +2,7 @@
 var mongoose = require('mongoose');
 mongoose.Promise = require('bluebird');
 var User = require('./models/user');
+var Job = require('./models/job');
 
 //* we added this
 if (process.env.MONGODB_URI) {
@@ -45,6 +46,25 @@ User.remove({})
         return User.create(jungmin);
     }).then(function(user) {
         console.log('new user: ', user);
-}).then(function() {
+})
+    .then(function() {
+        var job = new Job({
+            title: 'Front-End Web Developer',
+            company: 'General Assembly',
+            city: 'Atlanta',
+            description: 'This job is pretty legit. You should apply. Right now. Do it.',
+        });
+        var job2 = new Job({
+            title: 'Back-End Web Developer',
+            company: 'Not Home Depot',
+            city: 'Atlanta',
+            description: 'This job is a job.',
+        });
+        return Job.create([job, job2]);
+    })
+    .then(function(jobs) {
+        console.log('job1: ' + jobs[0] + ' job2: ' + jobs[1]);
+    })
+    .then(function() {
     quit();
 });
