@@ -9,6 +9,11 @@ var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
 mongoose.Promise = require('bluebird');
 
+//* passport specific
+var passport = require('passport');
+var session = require('express-session');
+var flash = require('connect-flash');
+
 
 //* Connect to database
 if (process.env.MONGODB_URI) {
@@ -44,6 +49,25 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 // add path for angular ui.router here!
+
+//* passport requirements
+app.use(session({
+    secret: 'Jobs are cool',
+    resave: true,
+    saveUninitialized: true }));
+
+app.use(passport.initialize());
+app.use(passport.session());
+app.use(flash());
+
+require('./config/passport/passport')(passport);
+
+app.use(function (req, res, next) {
+    global.currentUser = req.user;
+    next();
+});
+
+
 
 app.use('/', index);
 app.use('/users', users);
