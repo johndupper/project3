@@ -52,13 +52,13 @@ User.remove({})
             title: 'Front-End Web Developer',
             company: 'General Assembly',
             city: 'Atlanta',
-            description: 'This job is pretty legit. You should apply. Right now. Do it.',
+            description: 'This job is pretty legit. You should apply. Right now. Do it.'
         });
         var job2 = new Job({
             title: 'Back-End Web Developer',
             company: 'Not Home Depot',
             city: 'Atlanta',
-            description: 'This job is a job.',
+            description: 'This job is a job.'
         });
         return Job.create([job, job2]);
     })
