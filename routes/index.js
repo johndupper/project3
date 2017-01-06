@@ -40,10 +40,6 @@ router.post('/login', function(req, res, next) {
     return loginProperty(req, res, next);
 });
 
-router.get('/profile', function(req, res, next) {
-    res.render('profile');
-});
-
 router.get('/logout', function(req, res, next) {
     req.logout();
     res.redirect('/');
