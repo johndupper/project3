@@ -39,54 +39,25 @@ console.log('emptying and re-seeding local database');
 
 User.remove({})
     .then(function() {
-        Job.remove({});
-        console.log('creating one new user');
-        var jungmin = new User({
-            local: {
-                email: 'j@test.com',
-                password: ' test'
-            }
-        });
-
-        var phil = new User({
-            local: {
-                email: 'p@test.com',
-                password: ' test'
-            }
-        });
-        return User.create([jungmin, phil]);
-    })
-    .then(function(users) {
-        console.log('new user: ', users[0], users[1]);
-        return users;
-    })
-    .then(function(users) {
-        var job = new Job({
-            user: users[0],
-            jobtitle: 'JobTitle',
-            company: 'Company',
-            formattedLocation: 'Atlanta, GA',
-            snippet: 'This is a job.',
-            date: '1/6/2017',
-            url: 'www.jobs.com',
-            comments: 'Comment'
-        });
-
-        var job2 = new Job({
-            user: users[1],
-            jobtitle: 'JobTitle2',
-            company: 'Company2',
-            formattedLocation: 'Atlanta, GA2',
-            snippet: 'This is a job.2',
-            date: '1/6/2018',
-            url: 'www.jobs2.com',
-            comments: 'Comment2'
-        });
-        return Job.create([job, job2]);
-    })
-    .then(function(jobs) {
-        console.log('job1: ' + jobs[0] + ' job2: ' + jobs[1]);
-    })
-    .then(function() {
-    quit();
-});
+        Job.remove({})
+            .then(function() {
+               var user1 = new User({ local: { email: 'test@test.com', password: 'test' }});
+               return User.create(user1)
+                   .then(function(user) {
+                               var job = new Job({
+                                   user: user,
+                                   jobtitle: 'JobTitle',
+                                   company: 'Company',
+                                   formattedLocation: 'Atlanta, GA',
+                                   snippet: 'This is a job.',
+                                   date: '1/6/2017',
+                                   url: 'www.jobs.com',
+                                   comments: 'Comment'
+                               });
+                               Job.create(job)
+                                   .then(function() {
+                                       quit();
+                                   });
+                   });
+            });
+    });
