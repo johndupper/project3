@@ -1,7 +1,12 @@
 var mongoose = require('mongoose');
 
 var JobSchema = new mongoose.Schema({
-    title: {
+    user: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'User',
+        required: true
+    },
+    jobtitle: {
         type: String,
         required: true
     },
@@ -9,13 +14,19 @@ var JobSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    city: {
+    formattedLocation: {
         type: String,
         required: true
     },
-    description: {
+    snippet: {
         type: String,
         required: true
+    },
+    date: {
+        //
+    },
+    url: {
+        //
     },
     comments: {
         type: String
