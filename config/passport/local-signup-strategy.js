@@ -2,6 +2,7 @@ var LocalStrategy = require('passport-local').Strategy;
 var User = require('../../models/user');
 
 var strategy = new LocalStrategy({
+        // default is 'username'
         usernameField : 'email',
         passwordField : 'password',
         passReqToCallback : true
@@ -10,11 +11,11 @@ var strategy = new LocalStrategy({
         // Find a user with this e-mail
         User.findOne({ 'local.email' :  email }, function(err, user) {
             if (err) return callback(err);
+
             if (user) {
                 // A user with this email already exists
                 return callback(null, false, req.flash('error', 'This email is already taken.'));
-            }
-            else {
+            } else {
                 // Create a new user
                 var newUser = new User();
                 newUser.local.email = email;

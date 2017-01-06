@@ -2,7 +2,7 @@ var express = require('express');
 var router = express.Router();
 var passport = require('passport');
 
-/* GET home page. */
+
 router.get('/', function(req, res, next) {
     res.render('index', {
         title: 'Express',
@@ -25,7 +25,6 @@ router.post('/signup', function(req, res, next) {
     return signupStrategy(req, res, next);
 });
 
-
 router.get('/login', function(req, res, next) {
     res.render('login', {
         message: req.flash()
@@ -41,11 +40,9 @@ router.post('/login', function(req, res, next) {
     return loginProperty(req, res, next);
 });
 
-
 router.get('/profile', function(req, res, next) {
     res.render('profile');
 });
-
 
 router.get('/logout', function(req, res, next) {
     req.logout();
