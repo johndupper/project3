@@ -9,6 +9,7 @@
     <ul class="nav navbar-nav navbar-right">
         <% if (currentUser) { %>
             <li><a href="#"><%= currentUser.local.email %></a></li>
+            <li><a href="/search">Search</a></li>
             <li><a href="/logout">Logout</a></li>
         <% } else { %>
             <li><a href="/login">Login</a></li>

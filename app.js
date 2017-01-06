@@ -9,6 +9,7 @@ var bodyParser = require('body-parser');
 // we added these
 var mongoose = require('mongoose');
 mongoose.Promise = require('bluebird');
+var request = require('request');
 
 // passport specific
 var passport = require('passport');
@@ -35,6 +36,7 @@ mongoose.connection.once('open', function() {
 var index = require('./routes/index');
 var users = require('./routes/users');
 var profile = require('./routes/profile');
+var search = require('./routes/search');
 
 var app = express();
 
@@ -73,6 +75,7 @@ app.use(function (req, res, next) {
 app.use('/', index);
 app.use('/users', users);
 app.use('/profile', profile);
+app.use('/search', search);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

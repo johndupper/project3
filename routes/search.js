@@ -1,5 +1,6 @@
 var express = require('express');
 var router = express.Router();
+var request = require('request');
 
 var Job = require('../models/job');
 
@@ -11,9 +12,5 @@ function authenticate(req, res, next) {
         next();
     }
 }
-
-router.get('/', authenticate, function(req, res, next) {
-    res.render('search');
-});
 
 module.exports = router;
