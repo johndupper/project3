@@ -44,15 +44,10 @@ User.remove({})
                var user1 = new User({ local: { email: 'test@test.com', password: 'test' }});
                return User.create(user1)
                    .then(function(user) {
-                               var job = new Job({
-                                   user: user,
-                                   jobtitle: 'JobTitle',
-                                   company: 'Company',
-                                   formattedLocation: 'Atlanta, GA',
-                                   snippet: 'This is a job.',
-                                   date: '1/6/2017',
-                                   url: 'www.jobs.com',
-                                   comments: 'Comment'
+                               var job = new Job({ user: user, jobtitle: 'JobTitle',
+                                   company: 'Company', formattedLocation: 'Atlanta, GA',
+                                   snippet: 'This is a job.', date: '1/6/2017',
+                                   url: 'www.jobs.com', comments: 'Comment'
                                });
                                Job.create(job)
                                    .then(function() {
