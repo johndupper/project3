@@ -62,7 +62,7 @@ User.remove({})
             comments: 'This comment belongs to job 1'
         });
         var job2 = new Job({
-            user: users[1]._id,
+            user: users[0]._id,
             jobtitle: 'Job Title 2',
             company: 'Company 2',
             formattedLocation: 'Atlanta, GA',
