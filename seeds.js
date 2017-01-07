@@ -9,18 +9,18 @@ var Job = require('./models/job');
 
 // we added this
 if (process.env.MONGODB_URI) {
-    mongoose.connect(process.env.MONGODB_URI);
-} else {
-    mongoose.connect('mongodb://localhost/project3');
+  mongoose.connect(process.env.MONGODB_URI);
 }
-
+else {
+  mongoose.connect('mongodb://localhost/project3');
+}
 mongoose.connection.on('error', function(err) {
-    console.error('MongoDB connection error: ' + err);
-    process.exit(-1);
-});
-
+  console.error('MongoDB connection error: ' + err);
+  process.exit(-1);
+  }
+);
 mongoose.connection.once('open', function() {
-    console.log("Mongoose has connected to MongoDB!");
+  console.log("Mongoose has connected to MongoDB!");
 });
 
 // we need to disconnect when the seeds file is done
