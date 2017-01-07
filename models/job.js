@@ -23,10 +23,12 @@ var JobSchema = new mongoose.Schema({
         required: true
     },
     date: {
-        //
+        type: String,
+        required: true
     },
     url: {
-        //
+        type: String,
+        required: true
     },
     comments: {
         type: String
