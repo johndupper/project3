@@ -1,6 +1,7 @@
 // required for mongoose modeling
 var mongoose = require('mongoose');
 mongoose.Promise = require('bluebird');
+var bcrypt = require('bcrypt-nodejs');
 
 // mongoose models
 var User = require('./models/user');
@@ -28,31 +29,50 @@ function quit() {
     mongoose.disconnect();
 }
 
-// let us know if something went wrong with seeding database locally
-function handleError(error) {
-    console.log('seeds error: ', error);
-    quit();
-    return error;
-}
-
 console.log('emptying and re-seeding local database');
 
 User.remove({})
     .then(function() {
-        Job.remove({})
-            .then(function() {
-               var user1 = new User({ local: { email: 'test@test.com', password: 'test' }});
-               return User.create(user1)
-                   .then(function(user) {
-                               var job = new Job({ user: user, jobtitle: 'JobTitle',
-                                   company: 'Company', formattedLocation: 'Atlanta, GA',
-                                   snippet: 'This is a job.', date: '1/6/2017',
-                                   url: 'www.jobs.com', comments: 'Comment'
-                               });
-                               Job.create(job)
-                                   .then(function() {
-                                       quit();
-                                   });
-                   });
-            });
+        return Job.remove({});
+    })
+    .then(function() {
+        var user1 = new User({
+            local: {
+                email: 'john',
+                password: bcrypt.hashSync('test',  bcrypt.genSaltSync(8))
+            }
+        });
+        var user2 = new User({
+            local: {
+                email: 'john2',
+                password: bcrypt.hashSync('test',  bcrypt.genSaltSync(8))
+            }
+        });
+        return User.create([user1, user2]);
+    })
+    .then(function(users) {
+        var job1 = new Job({
+            user: users[0]._id,
+            jobtitle: 'Job Title 1',
+            company: 'Company 1',
+            formattedLocation: 'Atlanta, GA',
+            snippet: 'This is job 1 at company 1',
+            date: '1/6/2017',
+            url: 'www.job1.com',
+            comments: 'This comment belongs to job 1'
+        });
+        var job2 = new Job({
+            user: users[1]._id,
+            jobtitle: 'Job Title 2',
+            company: 'Company 2',
+            formattedLocation: 'Atlanta, GA',
+            snippet: 'This is job 2 at company 1',
+            date: '2/6/2017',
+            url: 'www.job2.com',
+            comments: 'This comment belongs to job 2'
+        });
+        return Job.create([job1, job2]);
+    })
+    .then(function() {
+        quit();
     });
