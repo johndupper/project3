@@ -13,12 +13,11 @@ function authenticate(req, res, next) {
 }
 
 router.get('/', authenticate, function(req, res, next) {
-    var testString = 'passing string';
-    Job.find({ jobtitle: 'JobTitle' })
+    Job.find({ user: req.user.id })
         .then(function(job) {
+            console.log('user id: ' + req.user.id);
             console.log(job);
             res.render('profile', {
-                string: testString,
                 job: job
             });
         });
