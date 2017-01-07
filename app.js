@@ -10,6 +10,7 @@ var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
 mongoose.Promise = require('bluebird');
 var request = require('request');
+var bcrypt = require('bcrypt-nodejs');
 
 // passport specific
 var passport = require('passport');
