@@ -13,4 +13,8 @@ function authenticate(req, res, next) {
     }
 }
 
+router.get('/', function(req, res, next) {
+    res.render('search');
+});
+
 module.exports = router;
