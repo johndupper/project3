@@ -9,9 +9,6 @@
     <% include partials/header %>
 </header>
 
-
-
-
 <ul>
     <% api['results'].forEach(function(job) { %>
         <li>
@@ -19,8 +16,8 @@
             <%= job["company"]%><br>
             <%= job["formattedLocation"]%><br>
             <%= job["snippet"]%><br>
-            <%= job["date"]%><br><br>
-        </li>
+            <%= job["date"]%>
+        </li><br><br>
     <% }); %>
 </ul>
 
