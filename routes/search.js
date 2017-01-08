@@ -2,6 +2,7 @@ var express = require('express');
 var router = express.Router();
 var request = require('request');
 
+
 var Job = require('../models/job');
 
 function authenticate(req, res, next) {
@@ -36,8 +37,9 @@ router.get('/results', authenticate, function(req, res, next) {
         });
 });
 
-router.post('/', function (req, res) {
-    res.send('POST!');
+router.post('/results', function (req, res) {
+
+    res.redirect('/');
     // res.render('some-file', { name: req.body.name });
 });
 
