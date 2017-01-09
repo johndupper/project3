@@ -22,8 +22,6 @@ router.get('/results', authenticate, function(req, res, next) {
 
     var jobSearch = req.query.jobSearch;
     var locationSearch = req.query.locationSearch;
-    // var testURL = 'http://api.indeed.com/ads/apisearch?publisher=9447015102421242&q='+jobSearch+'&l='+locationSearch+'&format=json';
-
 
         request('http://api.indeed.com/ads/apisearch?publisher=9447015102421242&q='+jobSearch+'&l='+locationSearch+'&sort=date&radius=&st=&jt=&start=&limit=25&fromage=30&filter=&latlong=&co=us&chnl=&userip=1.2.3.4&useragent=Mozilla/%2F4.0%28Firefox%29&v=2&format=json',
         function (error, response, body) {
