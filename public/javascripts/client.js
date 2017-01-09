@@ -92,11 +92,12 @@ app.controller('searchCtrl', function() {
 });
 
 // results
-app.controller('resultsCtrl', resultsCtrlrFm);
+app.controller('resultsCtrl', resultsCtrlFn);
+
 
 resultsCtrl.$inject=['$http'];
 
-function resultsCtrlrFm ($http) {
+function resultsCtrlFn ($http) {
     var vm = this;
 
     $http({
@@ -110,7 +111,7 @@ function resultsCtrlrFm ($http) {
     }
 
     function onError(error){
-        console.log('there was an error: ', error);
+        console.log('there was an error: ', error.message);
     }
 };
 
