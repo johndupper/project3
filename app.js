@@ -11,6 +11,7 @@ var mongoose = require('mongoose');
 mongoose.Promise = require('bluebird');
 var request = require('request');
 var bcrypt = require('bcrypt-nodejs');
+var methodOverride = require('method-override');
 
 // passport specific
 var passport = require('passport');
@@ -43,6 +44,7 @@ var app = express();
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
+
 app.set('view engine', 'ejs');
 
 // express generator provided these
@@ -51,7 +53,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
-    // add path for angular ui.router here!
+app.use(methodOverride('_method'));
 
 // passport requirements
 app.use(session({

@@ -2,6 +2,7 @@ var express = require('express');
 var router = express.Router();
 var request = require('request');
 
+
 var Job = require('../models/job');
 
 function authenticate(req, res, next) {
@@ -21,8 +22,6 @@ router.get('/results', authenticate, function(req, res, next) {
 
     var jobSearch = req.query.jobSearch;
     var locationSearch = req.query.locationSearch;
-    // var testURL = 'http://api.indeed.com/ads/apisearch?publisher=9447015102421242&q='+jobSearch+'&l='+locationSearch+'&format=json';
-
 
         request('http://api.indeed.com/ads/apisearch?publisher=9447015102421242&q='+jobSearch+'&l='+locationSearch+'&sort=date&radius=&st=&jt=&start=&limit=25&fromage=30&filter=&latlong=&co=us&chnl=&userip=1.2.3.4&useragent=Mozilla/%2F4.0%28Firefox%29&v=2&format=json',
         function (error, response, body) {
@@ -36,8 +35,9 @@ router.get('/results', authenticate, function(req, res, next) {
         });
 });
 
-router.post('/', function (req, res) {
-    res.send('POST!');
+router.post('/results', function (req, res) {
+
+    res.redirect('/');
     // res.render('some-file', { name: req.body.name });
 });
 

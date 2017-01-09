@@ -13,6 +13,10 @@ function authenticate(req, res, next) {
 }
 
 router.get('/', authenticate, function(req, res, next) {
+    // search all jobs for current user (id)
+        // if yes, render page, pass in job
+        // else, render()
+
     Job.find({ user: req.user.id })
         .then(function(job) {
             console.log('user id: ' + req.user.id);
