@@ -1,1 +1,12 @@
 <h1>{{ $ctrl.title }}</h1>
+
+<ul>
+    <li ng-repeat="job in $ctrl.jobs">
+        <h4>{{ job['jobtitle'] }}</h4>
+        <h5>{{ job['company'] }}</h5>
+        <h6>{{ job['formattedLocation'] }}</h6>
+        <h6>{{ job['snippet'] }}</h6>
+
+        <button>Save</button>
+    </li>
+</ul>
