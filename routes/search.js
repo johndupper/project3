@@ -35,5 +35,11 @@ router.get('/results', authenticate, function(req, res, next) {
         });
 });
 
+router.post('/results', function(req, res, next) {
+    var savedJob = new Job({
+        // do stuff
+    });
+    Job.save(savedJob);
+});
 
 module.exports = router;
