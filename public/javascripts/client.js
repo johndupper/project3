@@ -94,7 +94,6 @@ app.controller('searchCtrl', function() {
 // results
 app.controller('resultsCtrl', resultsCtrlFn);
 
-
 resultsCtrl.$inject=['$http'];
 
 function resultsCtrlFn ($http) {
@@ -105,36 +104,14 @@ function resultsCtrlFn ($http) {
         url: 'http://api.indeed.com/ads/apisearch?publisher=9447015102421242&q=developer&l=chicago&sort=date&radius=&st=&jt=&start=&limit=25&fromage=30&filter=&latlong=&co=us&chnl=&userip=1.2.3.4&useragent=Mozilla/%2F4.0%28Firefox%29&v=2&format=json'
     }).then(indeedAPISuccess, onError);
 
+
     function indeedAPISuccess(response) {
-        console.log('here\'s the indeed api data', response.data.results);
         vm.jobs = response.data.results;
-
-
-
-
-
-
-
+        console.log('GET request to API successful.');
     }
 
     function onError(error){
-        console.log('there was an error: ', error.message);
+        console.log('GET request to API failed: ', error);
     }
 };
 
-
-
-
-//
-// // results
-// app.controller('resultsCtrl', function($http) {
-//     this.title = 'Results';
-//     this.indeedResponse = {};
-//     $http.get('http://api.indeed.com/ads/apisearch?publisher=9447015102421242&q=developer&l=chicago&sort=date&radius=&st=&jt=&start=&limit=25&fromage=30&filter=&latlong=&co=us&chnl=&userip=1.2.3.4&useragent=Mozilla/%2F4.0%28Firefox%29&v=2&format=json')
-//         .then( (response) => {
-//             this.indeedResponse = response.data;
-//             console.log(response.data);
-//     });
-//
-//     console.log('resultsController is here');
-// });
