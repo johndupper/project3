@@ -84,22 +84,19 @@ app.controller('loginCtrl', function() {
 // profile
 app.controller('profileCtrl', function($http) {
 
-    this.title = 'Profile';
-
     var vm = this;
+    vm.title = 'Profile';
     vm.jobsList = {};
 
     $http({
         method: 'GET',
-        url: 'http://localhost:3000/profile/jobs'
+        url: '/profile/jobs'
     })
         // success
         .then(function(response) {
             vm.jobsList = response.data;
-        console.log('SUCCESS!');
-        console.log(response.data);
+        },
 
-    },
         //fail
         function() {
         console.log('FAIL');
