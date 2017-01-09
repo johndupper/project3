@@ -35,7 +35,7 @@ router.get('/results', authenticate, function(req, res, next) {
         });
 });
 
-router.post('/results', function (req, res) {
+router.get('/results', authenticate, function(req, res, next) {
     console.log('post route is being called!');
 });
 
