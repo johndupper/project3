@@ -36,7 +36,7 @@ router.get('/results', authenticate, function(req, res, next) {
 });
 
 router.post('/results', function (req, res) {
-    this.preventDefault();
+    console.log('post route is being called!');
 });
 
 module.exports = router;
