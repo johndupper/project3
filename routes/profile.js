@@ -12,19 +12,23 @@ function authenticate(req, res, next) {
     }
 }
 
-router.get('/', authenticate, function(req, res, next) {
-    // search all jobs for current user (id)
-        // if yes, render page, pass in job
-        // else, render()
-
-    Job.find({ user: req.user.id })
-        .then(function(job) {
-            console.log('user id: ' + req.user.id);
-            console.log(job);
-            res.render('profile', {
-                job: job
+router.get('/jobs', function(req, res, next) {
+    console.log('server request');
+    Job.find({})
+            .then(function(job) {
+                res.json(job);
             });
-        });
 });
+
+
+    // Job.find({ user: req.user.id })
+    //     .then(function(job) {
+    //         console.log('user id: ' + req.user.id);
+    //         console.log(job);
+    //         res.render('profile', {
+    //             job: job
+    //         });
+    //     });
+
 
 module.exports = router;
