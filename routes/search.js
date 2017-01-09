@@ -36,9 +36,7 @@ router.get('/results', authenticate, function(req, res, next) {
 });
 
 router.post('/results', function (req, res) {
-
-    res.redirect('/');
-    // res.render('some-file', { name: req.body.name });
+    this.preventDefault();
 });
 
 module.exports = router;

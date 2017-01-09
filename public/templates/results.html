@@ -2,11 +2,23 @@
 
 <ul>
     <li ng-repeat="job in $ctrl.jobs">
-        <h4>{{ job['jobtitle'] }}</h4>
-        <h5>{{ job['company'] }}</h5>
-        <h6>{{ job['formattedLocation'] }}</h6>
-        <h6>{{ job['snippet'] }}</h6>
 
-        <button>Save</button>
+        <form action="search/results" method="post" target="hiddenFrame">
+
+            <label for="jobtitle" >{{ job['jobtitle'] }}</label><br>
+            <input type="hidden" name="jobtitle" value="{{ job['jobtitle'] }}">
+
+            <label for="company" >{{ job['company'] }}</label><br>
+            <input type="hidden" name="company" value="{{ job['company'] }}">
+
+            <label for="formattedLocation">{{ job['formattedLocation'] }}</label><br>
+            <input type="hidden" name="formattedLocation" value="{{ job['formattedLocation'] }}">
+
+            <label for="date" >{{ job['date'] }}</label><br>
+            <input type="hidden" name="date" value="{{ job['date'] }}">
+
+            <input type="submit">
+        </form>
     </li>
 </ul>
+<iframe name="hiddenFrame" width="0" height="0" frameborder="0" style="display: none;"></iframe>
