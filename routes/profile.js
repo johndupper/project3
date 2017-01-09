@@ -12,23 +12,17 @@ function authenticate(req, res, next) {
     }
 }
 
+// index route for logged in user // jobs data for user
 router.get('/jobs', function(req, res, next) {
-    console.log('server request');
     Job.find({})
-            .then(function(job) {
-                res.json(job);
+            .then(function(jobs) {
+                res.json(jobs);
             });
 });
 
+router.get('/jobs/:id', function(req, res) {
+    // specific job by id
 
-    // Job.find({ user: req.user.id })
-    //     .then(function(job) {
-    //         console.log('user id: ' + req.user.id);
-    //         console.log(job);
-    //         res.render('profile', {
-    //             job: job
-    //         });
-    //     });
-
+});
 
 module.exports = router;
