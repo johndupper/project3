@@ -106,8 +106,15 @@ function resultsCtrlFn ($http) {
     }).then(indeedAPISuccess, onError);
 
     function indeedAPISuccess(response) {
-        console.log('here\'s the indeed api data', response.data);
-        vm.jobs = response.data.jobs;
+        console.log('here\'s the indeed api data', response.data.results);
+        vm.jobs = response.data.results;
+
+
+
+
+
+
+
     }
 
     function onError(error){
