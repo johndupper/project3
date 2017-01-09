@@ -70,6 +70,8 @@ app.controller('homeCtrl', function() {
 // signup
 app.controller('signupCtrl', function() {
     this.title = 'Signup';
+    //
+    //
     console.log('signupController is here');
 });
 
@@ -80,8 +82,29 @@ app.controller('loginCtrl', function() {
 });
 
 // profile
-app.controller('profileCtrl', function() {
+app.controller('profileCtrl', function($http) {
+
     this.title = 'Profile';
+
+    var vm = this;
+    vm.jobsList = {};
+
+    $http({
+        method: 'GET',
+        url: 'http://localhost:3000/profile/jobs'
+    })
+        // success
+        .then(function(response) {
+            vm.jobsList = response.data;
+        console.log('SUCCESS!');
+        console.log(response.data);
+
+    },
+        //fail
+        function() {
+        console.log('FAIL');
+    });
+
     console.log('profileController is here');
 });
 
@@ -93,17 +116,17 @@ app.controller('searchCtrl', function() {
 
 // results
 app.controller('resultsCtrl', resultsCtrlFn);
-
 resultsCtrl.$inject=['$http'];
 
 function resultsCtrlFn ($http) {
     var vm = this;
-
     $http({
         method: 'GET',
         url: 'http://api.indeed.com/ads/apisearch?publisher=9447015102421242&q=developer&l=chicago&sort=date&radius=&st=&jt=&start=&limit=25&fromage=30&filter=&latlong=&co=us&chnl=&userip=1.2.3.4&useragent=Mozilla/%2F4.0%28Firefox%29&v=2&format=json'
-    }).then(indeedAPISuccess, onError);
-
+    }).then(
+        indeedAPISuccess,
+        onError
+    );
 
     function indeedAPISuccess(response) {
         vm.jobs = response.data.results;
@@ -115,3 +138,17 @@ function resultsCtrlFn ($http) {
     }
 };
 
+/*
+ Ben Manning [4:06 PM]
+ ```// Simple GET request example:
+ $http({
+ method: 'GET',
+ url: '/someUrl'
+ }).then(function successCallback(response) {
+ // this callback will be called asynchronously
+ // when the response is available
+ }, function errorCallback(response) {
+ // called asynchronously if an error occurs
+ // or server returns response with an error status.
+ });```
+ */
