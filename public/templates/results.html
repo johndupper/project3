@@ -5,7 +5,9 @@
 
         <form action="search/results" method="post" target="hiddenFrame">
 
-            <label for="jobtitle" >{{ job['jobtitle'] }}</label><br>
+
+            <label for="jobtitle" ><strong>{{ job['jobtitle'] }}</strong></label><br>
+
             <input type="hidden" name="jobtitle" value="{{ job['jobtitle'] }}">
 
             <label for="company" >{{ job['company'] }}</label><br>
