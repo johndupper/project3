@@ -13,9 +13,9 @@ var passport = require('passport');
 */
 
 router.get('/', function(req, res) {
-
     res.render('landing');
 });
+
 
 router.get('/signup', function(req, res) {
     res.render('signup', {
@@ -32,6 +32,7 @@ router.post('/signup', function(req, res, next) {
     return signupStrategy(req, res, next);
 });
 
+
 router.get('/login', function(req, res) {
     res.render('login', {
         message: req.flash()
@@ -46,6 +47,7 @@ router.post('/login', function(req, res, next) {
     });
     return loginProperty(req, res, next);
 });
+
 
 router.get('/logout', function(req, res) {
     req.logout();
