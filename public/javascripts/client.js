@@ -3,34 +3,6 @@ var app = angular.module('careerCompass', ['ui.router']);
 
 app.config(function($stateProvider, $urlRouterProvider) {
 
-    // landing
-    $stateProvider
-        .state('home', {
-            url: '/',
-            templateUrl: '/templates/home.html',
-            controller: 'homeCtrl',
-            controllerAs: '$ctrl'
-        });
-
-    // signup
-    $stateProvider
-        .state('signup', {
-            url: '/signup',
-            templateUrl: '/templates/signup.html',
-            controller: 'signupCtrl',
-            controllerAs: '$ctrl'
-        });
-
-    // login
-    $stateProvider
-        .state('login', {
-            url: '/login',
-            templateUrl: '/templates/login.html',
-            controller: 'loginCtrl',
-            controllerAs: '$ctrl'
-        });
-
-    // profile page
     $stateProvider
         .state('profile', {
             url: '/profile',
@@ -39,7 +11,6 @@ app.config(function($stateProvider, $urlRouterProvider) {
             controllerAs: '$ctrl'
         });
 
-    // search page
     $stateProvider
         .state('search', {
             url: '/search',
@@ -48,7 +19,6 @@ app.config(function($stateProvider, $urlRouterProvider) {
             controllerAs: '$ctrl'
         });
 
-    // results page
     $stateProvider
         .state('results', {
             url: '/results',
@@ -57,59 +27,30 @@ app.config(function($stateProvider, $urlRouterProvider) {
             controllerAs: '$ctrl'
         });
 
-    $urlRouterProvider.otherwise('/');
+    $urlRouterProvider.otherwise('/profile');
 });
 
+/* CONTROLLERS */
 
-// landing
-app.controller('homeCtrl', function() {
-    this.title = 'Home';
-    console.log('homeController is here');
-});
+app.controller('profileCtrl', profileCtrlFn);
+profileCtrl.inject = ['$http'];
 
-// signup
-app.controller('signupCtrl', function() {
-    this.title = 'Signup';
-    //
-    //
-    console.log('signupController is here');
-});
-
-// login
-app.controller('loginCtrl', function() {
-    this.title = 'Login';
-    console.log('loginController is here');
-});
-
-// profile
-app.controller('profileCtrl', function($http) {
-
+function profileCtrlFn($http) {
     var vm = this;
-    vm.title = 'Profile';
-    vm.jobsList = {};
 
     $http({
         method: 'GET',
-        url: '/profile/jobs'
-    })
-        // success
-        .then(function(response) {
-            vm.jobsList = response.data;
-        },
+        url: 'profile/api/jobs'
+    }).then(httpSuccess, onError);
 
-        //fail
-        function() {
-        console.log('FAIL');
-    });
+    function httpSuccess(response) {
+        vm.jobsList = response.data;
+    }
 
-    console.log('profileController is here');
-});
-
-// search
-app.controller('searchCtrl', function() {
-    this.title = 'Search';
-    console.log('searchController is here');
-});
+    function onError(error) {
+        console.log('GET to /api/jobs failed: ', error);
+    }
+};
 
 // results
 app.controller('resultsCtrl', resultsCtrlFn);
