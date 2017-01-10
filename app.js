@@ -30,9 +30,9 @@ mongoose.connection.once('open', function() {
 
 // require routes
 var index = require('./routes/index');
-var users = require('./routes/users');
 var profile = require('./routes/profile');
 var search = require('./routes/search');
+
 
 var app = express();
 
@@ -73,7 +73,6 @@ app.use(function (req, res, next) {
 
 // use required routes
 app.use('/', index);
-app.use('/users', users);
 app.use('/profile', profile);
 app.use('/search', search);
 
