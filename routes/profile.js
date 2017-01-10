@@ -5,7 +5,6 @@ var Job = require('../models/job');
 
 /*  ROUTES:
  *   1. index    (GET)
- *   2. api/jobs (GET)
  */
 
 function authenticate(req, res, next) {
@@ -21,11 +20,5 @@ router.get('/', authenticate, function(req, res) {
     res.render('profile');
 });
 
-router.get('/api/jobs', authenticate, function(req, res) {
-    Job.find({})
-        .then(function(jobs) {
-            res.json(jobs);
-        });
-});
 
 module.exports = router;
