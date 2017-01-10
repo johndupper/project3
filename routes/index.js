@@ -2,16 +2,18 @@ var express = require('express');
 var router = express.Router();
 var passport = require('passport');
 
+
 /*  ROUTES:
-*   1. index (landing page)
+*   1. index   (GET)
 *   2. sign up (GET)
 *   3. sign up (POST)
-*   4. log in (GET)
-*   5. log in (POST)
+*   4. log in  (GET)
+*   5. log in  (POST)
 *   6. log out (GET)
 */
 
 router.get('/', function(req, res) {
+
     res.render('landing');
 });
 
@@ -24,7 +26,6 @@ router.get('/signup', function(req, res) {
 router.post('/signup', function(req, res, next) {
     var signupStrategy = passport.authenticate('local-signup', {
         successRedirect: '/profile',
-        successRedirect: '/templates/',
         failureRedirect: '/signup',
         failureFlash: true
     });
