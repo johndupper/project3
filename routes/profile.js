@@ -4,7 +4,8 @@ var router = express.Router();
 var Job = require('../models/job');
 
 /*  ROUTES:
- *   1. index   (GET)
+ *   1. index    (GET)
+ *   2. api/jobs (GET)
  */
 
 function authenticate(req, res, next) {
@@ -20,17 +21,11 @@ router.get('/', authenticate, function(req, res) {
     res.render('profile');
 });
 
-// index route for logged in user // jobs data for user
-router.get('/jobs', function(req, res, next) {
+router.get('/api/jobs', authenticate, function(req, res) {
     Job.find({})
-            .then(function(jobs) {
-                res.json(jobs);
-            });
-});
-
-router.get('/jobs/:id', function(req, res) {
-    // specific job by id
-
+        .then(function(jobs) {
+            res.json(jobs);
+        });
 });
 
 module.exports = router;
