@@ -2,23 +2,24 @@
 
 <ul>
     <li ng-repeat="job in $ctrl.jobs">
+        <div class="jobDisplay">
+            <form action="search/results" method="post">
 
-        <form action="search/results" method="post">
 
+                <label for="jobtitle"><strong>{{ job['jobtitle'] }}</strong></label><br>
+                <input type="hidden" name="jobtitle" value="{{ job['jobtitle'] }}">
 
-            <label for="jobtitle"><strong>{{ job['jobtitle'] }}</strong></label><br>
-            <input type="hidden" name="jobtitle" value="{{ job['jobtitle'] }}">
+                <label for="company">{{ job['company'] }}</label><br>
+                <input type="hidden" name="company" value="{{ job['company'] }}">
 
-            <label for="company">{{ job['company'] }}</label><br>
-            <input type="hidden" name="company" value="{{ job['company'] }}">
+                <label for="formattedLocation">{{ job['formattedLocation'] }}</label><br>
+                <input type="hidden" name="formattedLocation" value="{{ job['formattedLocation'] }}">
 
-            <label for="formattedLocation">{{ job['formattedLocation'] }}</label><br>
-            <input type="hidden" name="formattedLocation" value="{{ job['formattedLocation'] }}">
+                <label for="date" >{{ job['date'] }}</label><br>
+                <input type="hidden" name="date" value="{{ job['date'] }}">
 
-            <label for="date" >{{ job['date'] }}</label><br>
-            <input type="hidden" name="date" value="{{ job['date'] }}">
-
-            <input type="submit">
-        </form>
+                <input type="submit">
+            </form>
+        </div>
     </li>
 </ul>

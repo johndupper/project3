@@ -2,7 +2,11 @@
 
 <ul>
     <li ng-repeat="job in $ctrl.jobsList">
-        <p>{{ job['jobtitle'] }}</p>
-        <p>{{ job['company'] }}</p>
+        <div class="jobDisplay">
+            <p>{{ job['jobtitle'] }}</p>
+            <p>{{ job['company'] }}</p>
+            <p>{{ job['formattedLocation'] }}</p>
+            <p>{{ job['date'] }}</p>
+        </div>
     </li>
 </ul>
