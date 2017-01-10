@@ -3,6 +3,10 @@ var router = express.Router();
 
 var Job = require('../models/job');
 
+/*  ROUTES:
+ *   1. index   (GET)
+ */
+
 function authenticate(req, res, next) {
     if(!req.isAuthenticated()) {
         req.flash('error', 'Please signup or login.');
@@ -11,6 +15,10 @@ function authenticate(req, res, next) {
         next();
     }
 }
+
+router.get('/', authenticate, function(req, res) {
+    res.render('profile');
+});
 
 // index route for logged in user // jobs data for user
 router.get('/jobs', function(req, res, next) {
