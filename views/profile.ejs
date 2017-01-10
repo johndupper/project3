@@ -1,35 +1,21 @@
 <!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link href="https://fonts.googleapis.com/css?family=Roboto+Slab" rel="stylesheet">
-    <link rel="stylesheet" href="/stylesheets/style.css">
-    <title>Career Compass</title>
+    <% include partials/head %>
 </head>
 
-<body>
-<h1>Career Compass</h1>
+<body ng-app="careerCompass">
+    <h1>Career Compass</h1>
+    <h1>THIS IS MY SHIT!</h1>
 
-<h2>Profile Page</h2>
+    <nav>
+        <a ui-sref="profile">Profile</a>
+        <a ui-sref="search">Search</a>
+        <a ui-sref="results">Results</a>
+    </nav>
 
-<!-- warn user if issue exists -->
-<div class="flash">
-    <% if (typeof message !== 'undefined') { %>
-    <% if (typeof message.error !== 'undefined' && message.error.length > 0) { %>
-    <div class="bg-danger"><%= message.error %></div>
-    <% } %>
+    <main ui-view=""></main>
 
-    <% if (typeof message.info !== 'undefined' && message.info.length > 0) { %>
-    <div class="bg-info"><%= message.info %></div>
-    <% } %>
-
-    <% if (typeof message.success !== 'undefined' && message.success.length > 0) { %>
-    <div class="bg-success"><%= message.success %></div>
-    <% } %>
-    <% } %>
-</div>
-
+    <% include partials/scripts %>
 </body>
 </html>
