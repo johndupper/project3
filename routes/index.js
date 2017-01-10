@@ -13,6 +13,9 @@ var passport = require('passport');
 */
 
 router.get('/', function(req, res) {
+    // if loggd in
+        // index
+    // else
     res.render('landing');
 });
 
