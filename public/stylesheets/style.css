@@ -1,6 +1,14 @@
 body {
     background: grey;
     font-family: 'Roboto Slab', serif;
-    text-align: center;
 }
 
+.jobDisplay {
+    display: inline-block;
+    padding: 1.5rem;
+    border: 1px solid black;
+}
+
+ul {
+    list-style-type: none;
+}
