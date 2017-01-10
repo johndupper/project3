@@ -18,9 +18,18 @@ function authenticate(req, res, next) {
 
 // get saved jobs
 router.get('/savedjobs', authenticate, function(req, res) {
-    Job.find({})
+    console.log(req.user._id);
+    Job.find({user: req.user})
         .then(function(jobs) {
             res.json(jobs);
+        });
+});
+
+router.delete('/deletejob', authenticate, function(req, res) {
+    console.log('FOUND JOB TO DELETE: ', req.params.id);
+    Job.findByIdAndRemove(req.params.id)
+        .then(function() {
+            console.log('delete job maybe');
         });
 });
 
