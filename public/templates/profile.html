@@ -3,7 +3,7 @@
 <ul>
     <li ng-repeat="job in $ctrl.jobsList">
         <div class="jobDisplay">
-            <form method="POST" action="/api/deletejob?_method=DELETE">
+            <form method="post" action="/api/jobs">
 
 
                 <label for="jobtitle"><strong>{{ job['jobtitle'] }}</strong></label><br>
