@@ -32,8 +32,6 @@ mongoose.connection.once('open', function() {
 var index = require('./routes/index');
 var profile = require('./routes/profile');
 var job = require('./routes/job');
-var search = require('./routes/search');
-
 
 var app = express();
 
@@ -76,7 +74,6 @@ app.use(function (req, res, next) {
 app.use('/', index);
 app.use('/profile', profile);
 app.use('/api', job);
-app.use('/search', search);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

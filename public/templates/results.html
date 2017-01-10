@@ -1,9 +1,9 @@
 <h1>{{ $ctrl.title }}</h1>
 
 <ul>
-    <li ng-repeat="job in $ctrl.jobs">
+    <li ng-repeat="job in $ctrl.indeedResults">
         <div class="jobDisplay">
-            <form action="search/results" method="post">
+            <form action="api/add" method="post">
 
 
                 <label for="jobtitle"><strong>{{ job['jobtitle'] }}</strong></label><br>
@@ -14,6 +14,9 @@
 
                 <label for="formattedLocation">{{ job['formattedLocation'] }}</label><br>
                 <input type="hidden" name="formattedLocation" value="{{ job['formattedLocation'] }}">
+
+                <label for="snippet" >{{ job['snippet'] }}</label><br>
+                <input type="hidden" name="snippet" value="{{ job['snippet'] }}">
 
                 <label for="date" >{{ job['date'] }}</label><br>
                 <input type="hidden" name="date" value="{{ job['date'] }}">
