@@ -40,7 +40,7 @@ function profileCtrlFn($http) {
 
     $http({
         method: 'GET',
-        url: 'profile/api/jobs'
+        url: '/api/savedjobs'
     }).then(httpSuccess, onError);
 
     function httpSuccess(response) {
