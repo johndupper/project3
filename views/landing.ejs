@@ -2,15 +2,20 @@
 <html lang="en">
 <head>
     <% include partials/head %>
+    <link rel="stylesheet" type="text/css" href="/stylesheets/style-landing.css">
 </head>
 
 <body>
-    <h1>Career Compass</h1>
+    <nav>
+      <div class="nav-wrapper">
+        <ul id="nav-mobile" class="right hide-on-med-and-down">
+        <li><a href="signup">Sign Up</a></li>
+        <li><a href="login">Log In</a></li>
+        </ul>
+      </div>
+    </nav>
 
-    <div>
-        <a href="signup"><button>Sign Up</button></a>
-        <a href="login"><button>Log In</button></a>
-    </div>
+<h1>Career Compass</h1>
 
     <% include partials/scripts %>
 </body>

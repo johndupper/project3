@@ -25,3 +25,12 @@ a.noFormat {
     text-decoration: none;
     color: inherit;
 }
+
+.myJob {
+  border: 1px solid black;
+  width: 350px;
+  margin: 3em;
+  padding-bottom: 1em;
+  text-align: center;
+  float: left;
+}

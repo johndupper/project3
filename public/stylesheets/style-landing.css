@@ -1,0 +1,13 @@
+body {
+  background-image: url('/images/northstar.jpg');
+  background-size: 100%;
+  color: #FFDEAD;
+}
+
+.nav-wrapper {
+  background-color: #FFDEAD;
+}
+
+.nav-wrapper a {
+  color: black;
+}
