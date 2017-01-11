@@ -55,12 +55,46 @@ router.get('/results', authenticate, function(req, res) {
     });
 });
 
-router.delete('/deletejob', authenticate, function(req, res) {
-    console.log('FOUND JOB TO DELETE: ', req.params.id);
-    Job.findByIdAndRemove(req.params.id)
-        .then(function() {
-            console.log('delete job maybe');
-        });
+router.post('/deletejob', authenticate, function(req, res) {
+    console.log('FOUND JOB TO DELETE: ', req.body.jobtitle);
+    Job.findOne({jobtitle: req.body.jobtitle})
+        .then(function(job) {
+            console.log(job.jobtitle, job._id);;
+
+            Job.findByIdAndRemove(job._id, {},
+                    function(err, obj) {
+                        if (err) next(err);
+                        req.session.destroy(function(error) {
+                            if (err) {
+                                next(err)
+                            }
+                        });
+                        // res.json(200, obj);
+                    }
+                );
+
+            Job.remove(job);
+            // console.log('removed ', job);
+    });
+
+
+    // req.db.User.findByIdAndRemove(req.session.user._id, {},
+    //     function(err, obj) {
+    //         if (err) next(err);
+    //         req.session.destroy(function(error) {
+    //             if (err) {
+    //                 next(err)
+    //             }
+    //         });
+    //         res.json(200, obj);
+    //     }
+    // );
+
+
+    // Job.findByIdAndRemove(req.params.id)
+    //     .then(function() {
+    //         console.log('delete job maybe');
+    //     });
 });
 
 module.exports = router;
