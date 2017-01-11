@@ -54,7 +54,7 @@ app.controller('testCtrl', function($http) {
 app.controller('profileCtrl', function($http, $state) {
     var vm = this;
 
-    vm.console = function(jobId) {
+    vm.removeJob = function(jobId) {
         console.log('button works!', jobId);
         $http({
             method: 'DELETE',
