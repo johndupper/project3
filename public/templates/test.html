@@ -1,10 +1,12 @@
-<h1>{{ $ctrl.title }}</h1>
+<h1>test controller</h1>
+
+<input type="text" ng-model="$ctrl.jobString">
+<button ng-click="$ctrl.getJobs()"></button>
 
 <ul>
-    <li ng-repeat="job in $ctrl.indeedResults">
+    <li ng-repeat="job in $ctrl.allJobs">
         <div class="jobDisplay">
             <form action="api/jobs" method="post">
-
 
                 <label for="jobtitle"><strong>{{ job['jobtitle'] }}</strong></label><br>
                 <input type="hidden" name="jobtitle" value="{{ job['jobtitle'] }}">

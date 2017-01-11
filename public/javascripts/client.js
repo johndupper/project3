@@ -14,8 +14,8 @@ app.config(function($stateProvider, $urlRouterProvider) {
         .state('search', {
             url: '/search',
             templateUrl: '/templates/search.html',
-            controller: 'searchCtrl',
-            controllerAs: '$ctrl'
+            // controller: 'searchCtrl',
+            // controllerAs: '$ctrl'
         });
     $stateProvider
         .state('results', {
@@ -24,8 +24,58 @@ app.config(function($stateProvider, $urlRouterProvider) {
             controller: 'resultsCtrl',
             controllerAs: '$ctrl'
         });
+
+
+
+
+    // TEST FOR SEARCHING
+    $stateProvider
+        .state('test', {
+            url: '/test',
+            templateUrl: '/templates/test.html',
+            controller: 'testCtrl',
+            controllerAs: '$ctrl'
+        });
+
     $urlRouterProvider.otherwise('/profile');
 });
+
+
+app.controller('testCtrl', function($http) {
+    var vm = this;
+    vm.allJobs = {};
+
+    vm.getJobs = function() {
+        console.log(vm.jobString);
+        $http({
+            method: 'GET',
+            url: 'http://api.indeed.com/ads/apisearch?publisher=9447015102421242&q='+vm.jobString+'&l=atlanta&sort=date&radius=&st=&jt=&start=&limit=25&fromage=30&filter=&latlong=&co=us&chnl=&userip=1.2.3.4&useragent=Mozilla/%2F4.0%28Firefox%29&v=2&format=json'
+        }).then(
+            // success
+            function(response) {
+                vm.allJobs = response.data.results;
+                console.log('getJobs() success, jobs: ', vm.allJobs);
+            }, // error
+                function(error) {
+                console.log('GET to /api/jobs failed: ', error);
+            });
+        };
+
+    // vm.consoleMe = function(job) {
+    //     console.log(job);
+    //     $http({
+    //         method: 'POST',
+    //         url: 'api/jobs'
+    //     });
+    // };
+});
+
+
+
+
+
+
+
 
 /* CONTROLLERS */
 app.controller('profileCtrl', function($http) {
