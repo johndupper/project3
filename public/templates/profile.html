@@ -4,31 +4,13 @@
     <li ng-repeat="job in $ctrl.jobsList">
 
         <pre>{{ job['_id'] }}</pre>
-        <button ng-click="$ctrl.console(job._id)">Delete</button>
-
-        <!--<div class="jobDisplay">-->
-            <!--&lt;!&ndash; what goes here? &ndash;&gt;-->
-            <!--<form method="post" action="api/deletejob">-->
-
-                <!--<input type="hidden" name="job_id" value="{{ job['_id'] }}">-->
-
-                <!--<label for="jobtitle"><strong>{{ job['jobtitle'] }}</strong></label><br>-->
-                <!--<input type="hidden" name="jobtitle" value="{{ job['jobtitle'] }}">-->
-
-                <!--<label for="company">{{ job['company'] }}</label><br>-->
-                <!--<input type="hidden" name="company" value="{{ job['company'] }}">-->
-
-                <!--<label for="formattedLocation">{{ job['formattedLocation'] }}</label><br>-->
-                <!--<input type="hidden" name="formattedLocation" value="{{ job['formattedLocation'] }}">-->
-
-                <!--<label for="snippet" >{{ job['snippet'] }}</label><br>-->
-                <!--<input type="hidden" name="snippet" value="{{ job['snippet'] }}">-->
-
-                <!--<label for="date" >{{ job['date'] }}</label><br>-->
-                <!--<input type="hidden" name="date" value="{{ job['date'] }}">-->
-
-                <!--<input type="submit" value="Delete" ng-click="$ctrl.reloadJobs();">-->
-            <!--</form>-->
-        <!--</div>-->
+        <pre>{{ job['jobtitle'] }}</pre>
+        <pre>{{ job['company'] }}</pre>
+        <pre>{{ job['formattedLocation'] }}</pre>
+        <pre>{{ job['snippet'] }}</pre>
+        <pre>{{ job['date'] }}</pre>
+        <button ng-click="$ctrl.console(job._id)">
+            <a class="noFormat" ui-sref="profile" ui-sref-opts="{reload:true}">Delete</a>
+        </button>
     </li>
 </ul>

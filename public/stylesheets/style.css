@@ -20,3 +20,8 @@ ul {
 input.search {
     width: 15rem;
 }
+
+a.noFormat {
+    text-decoration: none;
+    color: inherit;
+}
