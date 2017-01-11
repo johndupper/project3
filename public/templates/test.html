@@ -1,7 +1,5 @@
-<h1>test controller</h1>
-
-<input type="text" ng-model="$ctrl.jobString">
-<button ng-click="$ctrl.getJobs()"></button>
+<input class="search" type="text" placeholder="developer, policeman, cook" ng-model="$ctrl.jobString">
+<button class="search" ng-click="$ctrl.getJobs()">Search</button>
 
 <ul>
     <li ng-repeat="job in $ctrl.allJobs">

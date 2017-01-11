@@ -12,3 +12,11 @@ body {
 ul {
     list-style-type: none;
 }
+
+.search {
+    margin: 1rem;
+    height: 2rem;
+}
+input.search {
+    width: 15rem;
+}

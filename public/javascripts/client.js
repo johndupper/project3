@@ -2,7 +2,6 @@
 var app = angular.module('careerCompass', ['ui.router']);
 
 app.config(function($stateProvider, $urlRouterProvider) {
-
     $stateProvider
         .state('profile', {
             url: '/profile',
@@ -11,23 +10,12 @@ app.config(function($stateProvider, $urlRouterProvider) {
             controllerAs: '$ctrl'
         });
     $stateProvider
-        .state('search', {
-            url: '/search',
-            templateUrl: '/templates/search.html',
-            // controller: 'searchCtrl',
-            // controllerAs: '$ctrl'
-        });
-    $stateProvider
         .state('results', {
             url: '/results',
             templateUrl: '/templates/results.html',
             controller: 'resultsCtrl',
             controllerAs: '$ctrl'
         });
-
-
-
-
     // TEST FOR SEARCHING
     $stateProvider
         .state('test', {
@@ -36,7 +24,6 @@ app.config(function($stateProvider, $urlRouterProvider) {
             controller: 'testCtrl',
             controllerAs: '$ctrl'
         });
-
     $urlRouterProvider.otherwise('/profile');
 });
 
@@ -80,7 +67,20 @@ app.controller('testCtrl', function($http) {
 /* CONTROLLERS */
 app.controller('profileCtrl', function($http) {
     var vm = this;
+    vm.reloadJobs = function() {
+        $http({
+            method: 'GET',
+            url: '/api/jobs'
+        }).then(httpSuccess, onError);
 
+        function httpSuccess(response) {
+            vm.jobsList = response.data;
+        }
+
+        function onError(error) {
+            console.log('GET to /api/jobs failed: ', error);
+        }
+    };
     $http({
         method: 'GET',
         url: '/api/jobs'
@@ -93,6 +93,12 @@ app.controller('profileCtrl', function($http) {
     function onError(error) {
         console.log('GET to /api/jobs failed: ', error);
     }
+
+    vm.delete = function (index) {
+        vm.items.splice(index, 1);
+    }
+
+
 });
 
 app.controller('resultsCtrl', function($http) {
