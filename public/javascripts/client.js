@@ -67,10 +67,13 @@ app.controller('testCtrl', function($http) {
 /* CONTROLLERS */
 app.controller('profileCtrl', function($http) {
     var vm = this;
-    vm.reloadJobs = function() {
+
+
+    vm.console = function(jobId) {
+        console.log('button works!', jobId);
         $http({
-            method: 'GET',
-            url: '/api/jobs'
+            method: 'BANANA',
+            url: 'api/jobs/' + jobId
         }).then(httpSuccess, onError);
 
         function httpSuccess(response) {
@@ -80,7 +83,24 @@ app.controller('profileCtrl', function($http) {
         function onError(error) {
             console.log('GET to /api/jobs failed: ', error);
         }
-    };
+    }
+
+    // vm.reloadJobs = function() {
+    //     console.log('RELOAD JOBS FIRED UP');
+    //     $http({
+    //         method: 'GET',
+    //         url: '/api/jobs'
+    //     }).then(httpSuccess, onError);
+    //
+    //     function httpSuccess(response) {
+    //         vm.jobsList = response.data;
+    //     }
+    //
+    //     function onError(error) {
+    //         console.log('GET to /api/jobs failed: ', error);
+    //     }
+    // };
+
     $http({
         method: 'GET',
         url: '/api/jobs'
@@ -93,12 +113,6 @@ app.controller('profileCtrl', function($http) {
     function onError(error) {
         console.log('GET to /api/jobs failed: ', error);
     }
-
-    vm.delete = function (index) {
-        vm.items.splice(index, 1);
-    }
-
-
 });
 
 app.controller('resultsCtrl', function($http) {

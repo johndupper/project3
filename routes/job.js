@@ -56,46 +56,31 @@ router.get('/results', authenticate, function(req, res) {
     });
 });
 
-router.post('/deletejob', authenticate, function(req, res) {
-    console.log('FOUND JOB TO DELETE: ', req.body.jobtitle);
-    Job.findOne({jobtitle: req.body.jobtitle})
+router.delete('/jobs/:id', authenticate, function(req, res) {
+    console.log('FOUND JOB TO DELETE: ', req.params.id);
+
+    Job.findById(req.params.id)
         .then(function(job) {
-            console.log(job.jobtitle, job._id);;
-
-            Job.findByIdAndRemove(job._id, {},
-                    function(err, obj) {
-                        if (err) next(err);
-                        req.session.destroy(function(error) {
-                            if (err) {
-                                next(err)
-                            }
-                        });
-                        // res.json(200, obj);
-                    }
-                );
-
-            Job.remove(job);
-            // console.log('removed ', job);
+            return Job.remove(job);
     });
 
+    /*
+     // DESTROY
+     router.delete('/:id', authenticate, function(req, res, next) {
+     Post.findById(req.params.id)
+     .then(function(post) {
+     if (!post.user.equals(currentUser.id)) return next(makeError(res, 'This does not belong to you!', 401));
+     return post.remove();
+     })
+     .then(function() {
+     res.redirect('/posts');
+     })
+     .catch(function(err) {
+     return next(err);
+     });
+     });
+     */
 
-    // req.db.User.findByIdAndRemove(req.session.user._id, {},
-    //     function(err, obj) {
-    //         if (err) next(err);
-    //         req.session.destroy(function(error) {
-    //             if (err) {
-    //                 next(err)
-    //             }
-    //         });
-    //         res.json(200, obj);
-    //     }
-    // );
-
-
-    // Job.findByIdAndRemove(req.params.id)
-    //     .then(function() {
-    //         console.log('delete job maybe');
-    //     });
 });
 
 module.exports = router;
