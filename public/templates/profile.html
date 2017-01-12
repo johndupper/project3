@@ -1,17 +1,27 @@
 <h1>{{ $ctrl.title }}</h1>
 
+<h3> My Jobs </h3>
+
 <ul>
     <li ng-repeat="job in $ctrl.jobsList">
       <div class=myJob>
-        <pre>{{ job['_id'] }}</pre>
-        <pre>{{ job['jobtitle'] }}</pre>
-        <pre>{{ job['company'] }}</pre>
-        <pre>{{ job['formattedLocation'] }}</pre>
-        <pre>{{ job['snippet'] }}</pre>
-        <pre>{{ job['date'] }}</pre>
-        <button ng-click="$ctrl.removeJob(job._id)">
+        <div class="col s12 m4">
+            <div class="card small indigo lighten-4">
+                <div class="card-content black-text">
+        <!-- <pre>{{ job['_id'] }}</pre> -->
+        <p>{{ job['jobtitle'] }}</p>
+        <p>{{ job['company'] }}</p>
+        <p>{{ job['formattedLocation'] }}</p>
+        <!-- <pre>{{ job['snippet'] }}</pre> -->
+        <p>{{ job['date'] }}</p
+          >
+        <button ng-click="$ctrl.removeJob(job._id)" class="waves-effect waves-light btn grey">
             <a class="noFormat" ui-sref="profile" ui-sref-opts="{reload:true}">Delete</a>
         </button>
+
+      </div>
+    </div>
+  </div>
       </div>
     </li>
 </ul>

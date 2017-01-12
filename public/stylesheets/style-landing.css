@@ -9,5 +9,19 @@ body {
 }
 
 .nav-wrapper a {
-  color: black;
+  color: #333333;
+}
+
+h1 {
+  font-family: 'Open Sans Condensed', sans-serif;
+  font-size: 5em;
+  margin-top: 70px;
+  margin-left: 50px;
+  text-align: left;
+}
+
+p {
+  text-align: left;
+  font-size: 2em;
+margin-left: 120px;
 }
