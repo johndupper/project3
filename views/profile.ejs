@@ -1,16 +1,24 @@
 <!doctype html>
 <html lang="en">
-    <head>
-        <% include partials/head %>
-    </head>
+<head>
+    <% include partials/head %>
+</head>
 
-    <body class="container-fluid">
-        <header>
-            <% include partials/header %>
-        </header>
+<body ng-app="careerCompass">
 
-        <h1>Profile Page!</h1>
-        <h4><%= job %></h4>
+    <nav>
+      <div class="nav-wrapper">
+        <ul id="nav-mobile" class="left hide-on-med-and-down">
+        <li><a ui-sref="profile">My Jobs</a></li>
+        <li><a ui-sref="test">Search</a><li>
+        </ul>
+        <ul id="nav-mobile" class="right hide-on-med-and-down">
+        <li><a href="/logout">Log Out</a></li>
+        </ul>
+      </div>
+    </nav>
+    <main ui-view=""></main>
 
-    </body>
+    <% include partials/scripts %>
+</body>
 </html>

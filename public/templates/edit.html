@@ -1,0 +1,18 @@
+<h1>{{ $ctrl.title }}</h1>
+
+<label for="jobtitle"><strong>{{ job['jobtitle'] }}</strong></label><br>
+<input type="hidden" name="jobtitle" value="{{ job['jobtitle'] }}">
+
+<label for="company">{{ job['company'] }}</label><br>
+<input type="hidden" name="company" value="{{ job['company'] }}">
+
+<label for="formattedLocation">{{ job['formattedLocation'] }}</label><br>
+<input type="hidden" name="formattedLocation" value="{{ job['formattedLocation'] }}">
+
+<label for="snippet" >{{ job['snippet'] }}</label><br>
+<input type="hidden" name="snippet" value="{{ job['snippet'] }}">
+
+<label for="date" >{{ job['date'] }}</label><br>
+<input type="hidden" name="date" value="{{ job['date'] }}">
+
+<input type="submit">

@@ -1,8 +1,133 @@
-body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+input::-webkit-input-placeholder {
+color: #333333 !important;
 }
 
-a {
-  color: #00B7FF;
+input:-moz-placeholder { /* Firefox 18- */
+color: #333333 !important;
+}
+
+input::-moz-placeholder {  /* Firefox 19+ */
+color: #333333 !important;
+}
+
+input:-ms-input-placeholder {
+color: #333333 !important;
+}
+
+body {
+  background: #90a4ae;
+  font-family: 'Inconsolata', monospace;
+    /*font-family: 'Roboto Slab', serif;*/
+}
+
+.nav-wrapper {
+  background-color: #FFDEAD;
+}
+.nav-wrapper a {
+  color: #333333;
+}
+
+.authStyle {
+  font-family: 'Open Sans Condensed', sans-serif;
+  color: #FFDEAD;
+  margin-left: 50px;
+}
+
+h2 {
+  text-align: center;
+  color: #333333;
+  font-size: 3em;
+}
+
+h3 {
+  color: #333333;
+  text-align: center;
+  margin-top: 50px;
+}
+
+.signlog {
+  text-align: center;
+  width: 800px;
+  height: 1000px;
+  margin: auto;
+  padding: 70px;
+}
+
+form {
+  color: #333333;
+}
+
+ul {
+    list-style-type: none;
+}
+
+.search {
+    margin: 1rem;
+    height: 2rem;
+}
+input.search {
+    width: 15rem;
+}
+
+a.noFormat {
+    text-decoration: none;
+    color: inherit;
+}
+
+.myJob {
+
+  font-family: 'Inconsolata', monospace;
+  line-height: 250%;
+  height: 300px;
+  width: 300px;
+  margin: 2em;
+  padding-bottom: 1em;
+  text-align: center;
+  float: left;
+}
+
+.searchBox {
+  font-family: 'Inconsolata', monospace;
+  color: #333333;
+  width: 500px;
+  margin: 0 auto;
+  text-align: center;
+  padding-top: 150px;
+}
+
+.jobDisplay {
+    display: inline-block;
+    width: 800px;
+    margin: 0.5em 0 0 10em;
+    /*margin-left: 50px;*/
+    padding: 1.5rem;
+    font-size: 30px;
+    text-align: center;
+}
+
+.card label {
+  color: #333333;
+  font-size: 17px;
+}
+.card-content label {
+  color: #333333;
+
+}
+
+.card-content {
+  font-size: 17px;
+  height: 330px;
+  color: #333333;
+}
+
+.card-content button {
+  position: absolute;
+  bottom: 1.5em;
+  /*margin-top: 5rem;*/
+}
+
+.result {
+  color: #333333;
+  height: 300px;
+  font-size: 20px;
 }

@@ -1,31 +1,57 @@
 <!doctype html>
 <html lang="en">
-    <head>
-        <% include partials/head %>
-    </head>
+<head>
+    <% include partials/head %>
+</head>
 
-    <body class="container-fluid">
-        <header>
-            <% include partials/header %>
-        </header>
+<body>
+    <h1><a class="authStyle" href='/'>Career Compass</a></h1>
 
-        <main>
-            <div>
-                <h2>Signup</h2>
-                <form method="post" action="/signup">
-                    <div class="form-group">
-                        <label for="email">Email</label>
-                        <input class="form-control" type="text" name="email" id="email">
-                    </div>
+    <!-- warn user if issue exists -->
+    <div class="flash">
+        <% if (typeof message !== 'undefined') { %>
+            <% if (typeof message.error !== 'undefined' && message.error.length > 0) { %>
+                <div class="bg-danger"><%= message.error %></div>
+            <% } %>
 
-                    <div class="form-group">
-                        <label for="password">Password</label>
-                        <input class="form-control" type="password" name="password" id="password">
-                    </div>
+            <% if (typeof message.info !== 'undefined' && message.info.length > 0) { %>
+                <div class="bg-info"><%= message.info %></div>
+            <% } %>
 
-                    <input class="btn btn-default" type="submit">
-                </form>
+            <% if (typeof message.success !== 'undefined' && message.success.length > 0) { %>
+                <div class="bg-success"><%= message.success %></div>
+            <% } %>
+        <% } %>
+    </div>
+    <!-- sign up form -->
+
+<h2>Sign Up</h2>
+  <div class="signlog" >
+    <div class="card indigo lighten-4">
+      <div class="card-content white-text">
+
+        <form action="/signup" method="post">
+
+          <div class="row">
+            <div class="input-field col s12">
+              <input class="validate" type="text" name="email" id="email">
+              <label for="email">email</label>
             </div>
-        </main>
-    </body>
+          </div>
+          <div class="row">
+            <div class="input-field col s12">
+              <input class="validate" type="password" name="password" id="password">
+              <label for="password">password</label>
+            </div>
+          </div>
+
+            <button type="submit" class="waves-effect waves-light btn grey">Submit</button>
+        </form>
+
+        </div>
+      </div>
+    </div>
+
+    <% include partials/scripts %>
+</body>
 </html>
