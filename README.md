@@ -8,6 +8,8 @@
 * Lisa Holter
 * Philip Frazer
 
+####Deployed: https://calm-peak-65254.herokuapp.com/
+
 ####Trello: <https://trello.com/b/uYMdOKL1/project-three>
 
 ####Technologies Used:
