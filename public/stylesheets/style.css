@@ -76,10 +76,12 @@ a.noFormat {
 }
 
 .myJob {
+
   font-family: 'Inconsolata', monospace;
-  line-height: 200%;
-  width: 350px;
-  margin: 3em;
+  line-height: 250%;
+  height: 300px;
+  width: 300px;
+  margin: 2em;
   padding-bottom: 1em;
   text-align: center;
   float: left;
@@ -96,8 +98,37 @@ a.noFormat {
 
 .jobDisplay {
     display: inline-block;
-    width: 600px;
-    margin-left: 50px;
+    width: 800px;
+    margin: 0.5em 0 0 10em;
+    /*margin-left: 50px;*/
     padding: 1.5rem;
+    font-size: 30px;
+    text-align: center;
+}
 
+.card label {
+  color: #333333;
+  font-size: 17px;
+}
+.card-content label {
+  color: #333333;
+
+}
+
+.card-content {
+  font-size: 17px;
+  height: 330px;
+  color: #333333;
+}
+
+.card-content button {
+  position: absolute;
+  bottom: 1.5em;
+  /*margin-top: 5rem;*/
+}
+
+.result {
+  color: #333333;
+  height: 300px;
+  font-size: 20px;
 }

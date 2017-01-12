@@ -5,17 +5,16 @@
 <ul>
     <li ng-repeat="job in $ctrl.jobsList">
       <div class=myJob>
-        <div class="col s12 m4">
-            <div class="card small indigo lighten-4">
+        <div class="col s12 m6">
+            <div class="card m indigo lighten-4">
                 <div class="card-content black-text">
         <!-- <pre>{{ job['_id'] }}</pre> -->
         <p>{{ job['jobtitle'] }}</p>
         <p>{{ job['company'] }}</p>
         <p>{{ job['formattedLocation'] }}</p>
         <!-- <pre>{{ job['snippet'] }}</pre> -->
-        <p>{{ job['date'] }}</p
-          >
-        <button ng-click="$ctrl.removeJob(job._id)" class="waves-effect waves-light btn grey">
+        <p>{{ job['date'] }}</p>
+        <button ng-click="$ctrl.removeJob(job._id)" class="waves-effect waves-light btn grey button">
             <a class="noFormat" ui-sref="profile" ui-sref-opts="{reload:true}">Delete</a>
         </button>
 

@@ -13,7 +13,7 @@ body {
 }
 
 h1 {
-  font-family: 'Open Sans Condensed', sans-serif;
+  font-family: 'Bungee Shade', cursive;
   font-size: 5em;
   margin-top: 70px;
   margin-left: 50px;
@@ -23,5 +23,7 @@ h1 {
 p {
   text-align: left;
   font-size: 2em;
-margin-left: 120px;
+  margin-left: 120px;
+  font-family: 'Open Sans Condensed', sans-serif;
+
 }
