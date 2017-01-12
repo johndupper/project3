@@ -10,15 +10,13 @@
         <pre>{{ job['snippet'] }}</pre>
         <pre>{{ job['date'] }}</pre>
 
-
-        <input ng-show="$ctrl.showInput" type="text">
-
         <button ng-click="$ctrl.removeJob(job._id)">
-            <a class="noFormat" ui-sref="profile" ui-sref-opts="{reload:true}">Delete</a>
+            <a class="noFormat" ui-sref="test" ui-sref-opts="{reload:true}">Delete</a>
         </button>
 
-        <button ng-click="$ctrl.showComment()">Edit</button>
-        <!--<button ng-show="editing" ng-click="editing = false" ng-submit="$ctrl.inputField">Save</button>-->
+        <button id="{{ job['_id'] }}" ng-click="___editMethod___">
+            <a class="noFormat" ui-sref="edit"></a>
+        </button>
 
     </li>
 </ul>

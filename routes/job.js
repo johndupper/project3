@@ -20,6 +20,15 @@ router.get('/jobs', authenticate, function(req, res) {
         });
 });
 
+router.get('/jobs/:id', authenticate, function(req, res) {
+    //
+});
+
+router.put('/jobs/:id', authenticate, function(req, res) {
+    console.log('edit route called.');
+});
+
+
 router.post('/jobs', authenticate, function(req, res) {
     var thisJob = new Job({
         user: currentUser._id,
@@ -44,10 +53,6 @@ router.get('/results', authenticate, function(req, res) {
             res.json(resultsAsJSON);
         }
     });
-});
-
-router.put('/jobs/:id', authenticate, function(req, res) {
-    console.log('edit route called.');
 });
 
 router.delete('/jobs/:id', authenticate, function(req, res) {

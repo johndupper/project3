@@ -16,7 +16,17 @@ app.config(function($stateProvider, $urlRouterProvider) {
             controller: 'resultsCtrl',
             controllerAs: '$ctrl'
         });
-    // TEST FOR SEARCHING
+
+    // ID --> edit here
+    $stateProvider
+        .state('edit', {
+            url: '/edit',
+            templateUrl: '/templates/edit.html',
+            controller: 'editCtrl',
+            controllerAs: '$ctrl'
+        });
+
+    // this is the actual search/results controller
     $stateProvider
         .state('test', {
             url: '/test',
@@ -55,18 +65,33 @@ app.controller('profileCtrl', function($http, $state) {
     var vm = this;
 
     vm.showInput = false;
+    vm.buttonText = 'Edit';
 
-    vm.showComment = function() {
+    $http({
+        method: 'GET',
+        url: '/api/jobs'
+    }).then(httpSuccess, onError);
+    function httpSuccess(response) {
+        console.log('HTTP SUCCESS: ', response);
+        vm.jobsList = response.data;
+    }
+    function onError(error) {
+        console.log('GET to /api/jobs failed: ', error);
+    }
 
+    vm.toggleInput = function() {
         if (vm.showInput === false) {
             vm.showInput = true;
+            vm.buttonText = 'Save';
         } else {
             vm.showInput = false;
+            vm.buttonText = 'Edit';
         }
-
-        console.log('this button works');
     };
 
+    vm.consoleText = function(text) {
+        console.log('consoleText: ', text);
+    };
 
     vm.removeJob = function(jobId) {
         console.log('button works!', jobId);
@@ -81,22 +106,13 @@ app.controller('profileCtrl', function($http, $state) {
             console.log('GET to /api/jobs failed: ', error);
         }
     };
+});
 
-    vm.addComment = function() {
-        console.log('add comment');
-    };
 
-    $http({
-        method: 'GET',
-        url: '/api/jobs'
-    }).then(httpSuccess, onError);
-    function httpSuccess(response) {
-        console.log('HTTP SUCCESS: ', response);
-        vm.jobsList = response.data;
-    }
-    function onError(error) {
-        console.log('GET to /api/jobs failed: ', error);
-    }
+
+app.controller('editCtrl', function($http) {
+    var vm = this;
+
 });
 
 
