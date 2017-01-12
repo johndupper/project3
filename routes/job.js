@@ -48,7 +48,7 @@ router.post('/jobs', authenticate, function(req, res) {
 
 
 router.get('/results', authenticate, function(req, res) {
-    request('http://api.indeed.com/ads/apisearch?publisher=9447015102421242&q=developer&l=atlanta&sort=date&radius=&st=&jt=&start=&limit=25&fromage=30&filter=&latlong=&co=us&chnl=&userip=1.2.3.4&useragent=Mozilla/%2F4.0%28Firefox%29&v=2&format=json',
+    request('https://api.indeed.com/ads/apisearch?publisher=9447015102421242&q=developer&l=atlanta&sort=date&radius=&st=&jt=&start=&limit=25&fromage=30&filter=&latlong=&co=us&chnl=&userip=1.2.3.4&useragent=Mozilla/%2F4.0%28Firefox%29&v=2&format=json',
     function(error, response, body) {
         if (!error && response.statusCode === 200) {
             var resultsAsJSON = JSON.parse(body);
