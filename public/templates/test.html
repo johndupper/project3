@@ -1,10 +1,21 @@
-<input class="search" type="text" placeholder="developer, policeman, cook" ng-model="$ctrl.jobString">
-<input class="search" type="text" placeholder="atlanta, los angeles, austin" ng-model="$ctrl.locationString">
-<button class="search" ng-click="$ctrl.getJobs()">Search</button>
+
+
+<div class="searchBox">
+    <div class="card indigo lighten-4">
+      <div class="card-content black-text">
+<input class="search" type="text" placeholder="position" ng-model="$ctrl.jobString">
+<input class="search" type="text" placeholder="location" ng-model="$ctrl.locationString">
+<!-- <button class="search" ng-click="$ctrl.getJobs()">Search</button> -->
+<button type="submit" class="waves-effect waves-light btn grey" ng-click="$ctrl.getJobs()">Search</button>
+</div>
+</div>
+</div>
 
 <ul>
     <li ng-repeat="job in $ctrl.allJobs">
         <div class="jobDisplay">
+          <div class="card indigo lighten-4">
+            <div class="card-content black-text">
             <form action="api/jobs" method="post">
 
                 <label for="jobtitle"><strong>{{ job['jobtitle'] }}</strong></label><br>
@@ -22,8 +33,10 @@
                 <label for="date" >{{ job['date'] }}</label><br>
                 <input type="hidden" name="date" value="{{ job['date'] }}">
 
-                <input type="submit">
+                <button type="submit" class="waves-effect waves-light btn grey"> Save </button>
             </form>
+          </div>
+        </div>
         </div>
     </li>
 </ul>

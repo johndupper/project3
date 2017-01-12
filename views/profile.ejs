@@ -5,15 +5,27 @@
 </head>
 
 <body ng-app="careerCompass">
-    <h1>Career Compass</h1>
 
     <nav>
+<<<<<<< HEAD
         <a ui-sref="profile">Profile</a>
         <!--<a ui-sref="results">Results</a>-->
         <a ui-sref="test">New Search</a>
         <a ui-sref="edit">New Search</a>
         <a href="/error">Log Out</a>
+=======
+      <div class="nav-wrapper">
+        <ul id="nav-mobile" class="left hide-on-med-and-down">
+        <li><a ui-sref="profile">My Jobs</a></li>
+        <li><a ui-sref="test">Search</a><li>
+        </ul>
+        <ul id="nav-mobile" class="right hide-on-med-and-down">
+        <li><a href="/logout">Log Out</a></li>
+        </ul>
+      </div>
+>>>>>>> 43ae04bbf8bccb32a89751cc491790321ddd444a
     </nav>
+
 
     <main ui-view=""></main>
 

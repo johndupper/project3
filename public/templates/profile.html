@@ -1,7 +1,10 @@
 <h1>{{ $ctrl.title }}</h1>
 
+<h3> My Jobs </h3>
+
 <ul>
     <li ng-repeat="job in $ctrl.jobsList">
+<<<<<<< HEAD
 
         <pre>{{ job['_id'] }}</pre>
         <pre>{{ job['jobtitle'] }}</pre>
@@ -16,7 +19,26 @@
 
         <button id="{{ job['_id'] }}" ng-click="___editMethod___">
             <a class="noFormat" ui-sref="edit"></a>
+=======
+      <div class=myJob>
+        <div class="col s12 m4">
+            <div class="card small indigo lighten-4">
+                <div class="card-content black-text">
+        <!-- <pre>{{ job['_id'] }}</pre> -->
+        <p>{{ job['jobtitle'] }}</p>
+        <p>{{ job['company'] }}</p>
+        <p>{{ job['formattedLocation'] }}</p>
+        <!-- <pre>{{ job['snippet'] }}</pre> -->
+        <p>{{ job['date'] }}</p
+          >
+        <button ng-click="$ctrl.removeJob(job._id)" class="waves-effect waves-light btn grey">
+            <a class="noFormat" ui-sref="profile" ui-sref-opts="{reload:true}">Delete</a>
+>>>>>>> 43ae04bbf8bccb32a89751cc491790321ddd444a
         </button>
 
+      </div>
+    </div>
+  </div>
+      </div>
     </li>
 </ul>
