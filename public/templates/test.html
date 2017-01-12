@@ -14,8 +14,8 @@
 <ul>
     <li ng-repeat="job in $ctrl.allJobs">
         <div class="jobDisplay">
-          <div class="card indigo lighten-4">
-            <div class="card-content black-text">
+          <div class="card indigo lighten-4 black-text">
+
             <form action="api/jobs" method="post">
 
                 <label for="jobtitle"><strong>{{ job['jobtitle'] }}</strong></label><br>
@@ -35,8 +35,9 @@
 
                 <button type="submit" class="waves-effect waves-light btn grey"> Save </button>
             </form>
+
+
           </div>
-        </div>
         </div>
     </li>
 </ul>
