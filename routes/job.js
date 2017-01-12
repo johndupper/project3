@@ -2,16 +2,7 @@ var express = require('express');
 var router = express.Router();
 var request = require('request');
 
-
 var Job = require('../models/job');
-
-/*
-    ROUTES:
-    1. /jobs        GET     get current user's jobs                             X
-    2. /jobs/:id    GET     get specific job in order to edit it
-    3. /jobs/:id    PUT     get specific job, edit that shit
-    4. /jobs/:id    DELETE  delete this specific job from user's saved jobs
- */
 
 function authenticate(req, res, next) {
     if(!req.isAuthenticated()) {
@@ -22,7 +13,6 @@ function authenticate(req, res, next) {
     }
 }
 
-// get saved jobs
 router.get('/jobs', authenticate, function(req, res) {
     Job.find({user: req.user})
         .then(function(jobs) {
@@ -56,6 +46,10 @@ router.get('/results', authenticate, function(req, res) {
     });
 });
 
+router.put('/jobs/:id', authenticate, function(req, res) {
+    console.log('edit route called.');
+});
+
 router.delete('/jobs/:id', authenticate, function(req, res) {
     console.log('FOUND JOB TO DELETE: ', req.params.id);
 
@@ -63,24 +57,6 @@ router.delete('/jobs/:id', authenticate, function(req, res) {
         .then(function(job) {
             return Job.remove(job);
     });
-
-    /*
-     // DESTROY
-     router.delete('/:id', authenticate, function(req, res, next) {
-     Post.findById(req.params.id)
-     .then(function(post) {
-     if (!post.user.equals(currentUser.id)) return next(makeError(res, 'This does not belong to you!', 401));
-     return post.remove();
-     })
-     .then(function() {
-     res.redirect('/posts');
-     })
-     .catch(function(err) {
-     return next(err);
-     });
-     });
-     */
-
 });
 
 module.exports = router;

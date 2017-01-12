@@ -26,8 +26,8 @@ var JobSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    applied: {
-        type: Boolean
+    comments: {
+        type: String
     }
 });
 

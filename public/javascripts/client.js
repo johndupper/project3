@@ -54,36 +54,46 @@ app.controller('testCtrl', function($http) {
 app.controller('profileCtrl', function($http, $state) {
     var vm = this;
 
+    vm.showInput = false;
+
+    vm.showComment = function() {
+
+        if (vm.showInput === false) {
+            vm.showInput = true;
+        } else {
+            vm.showInput = false;
+        }
+
+        console.log('this button works');
+    };
+
+
     vm.removeJob = function(jobId) {
         console.log('button works!', jobId);
         $http({
             method: 'DELETE',
             url: 'api/jobs/' + jobId
         }).then(httpSuccess, onError);
-
         function httpSuccess(response) {
             vm.jobsList = response.data;
         }
-
         function onError(error) {
             console.log('GET to /api/jobs failed: ', error);
         }
+    };
 
-        vm.reload = function() {
-
-        };
+    vm.addComment = function() {
+        console.log('add comment');
     };
 
     $http({
         method: 'GET',
         url: '/api/jobs'
     }).then(httpSuccess, onError);
-
     function httpSuccess(response) {
         console.log('HTTP SUCCESS: ', response);
         vm.jobsList = response.data;
     }
-
     function onError(error) {
         console.log('GET to /api/jobs failed: ', error);
     }
