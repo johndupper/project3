@@ -21,7 +21,10 @@ router.get('/jobs', authenticate, function(req, res) {
 });
 
 router.get('/jobs/:id', authenticate, function(req, res) {
-    //
+    Job.findById(req.params.id)
+        .then(function(job) {
+            res.json(job);
+        });
 });
 
 router.put('/jobs/:id', authenticate, function(req, res) {

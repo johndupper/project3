@@ -64,8 +64,7 @@ app.controller('testCtrl', function($http) {
 app.controller('profileCtrl', function($http, $state) {
     var vm = this;
 
-    vm.showInput = false;
-    vm.buttonText = 'Edit';
+
 
     $http({
         method: 'GET',
@@ -79,19 +78,19 @@ app.controller('profileCtrl', function($http, $state) {
         console.log('GET to /api/jobs failed: ', error);
     }
 
-    vm.toggleInput = function() {
-        if (vm.showInput === false) {
-            vm.showInput = true;
-            vm.buttonText = 'Save';
-        } else {
-            vm.showInput = false;
-            vm.buttonText = 'Edit';
-        }
+    // edit attempts
+    vm.showJobId = function(str) {
+        console.log('job id: ', str);
+
+        $http({
+            method: 'GET',
+            url: '/api/jobs/' + str
+        }).then(function(oneJob) {
+            vm.jobToEdit = oneJob;
+        });
     };
 
-    vm.consoleText = function(text) {
-        console.log('consoleText: ', text);
-    };
+
 
     vm.removeJob = function(jobId) {
         console.log('button works!', jobId);
